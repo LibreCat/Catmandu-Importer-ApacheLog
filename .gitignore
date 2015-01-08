@@ -9,7 +9,7 @@ Makefile.PL
 MANIFEST*
 META.*
 MYMETA.*
-Catmandu-DBI-*
+Catmandu-Importer-ApacheLog-*
 !*.t
 _build_params
 test/
