@@ -34,6 +34,9 @@ sub _build_parser {
         check_array_ref($self->strict());
         $args{strict} = $self->strict();
     }
+    else{
+        $args{fast} = 1;
+    }
     Apache::Log::Parser->new(%args,@{ $self->formats() });
 }
 
@@ -52,5 +55,42 @@ sub generator {
         $r;
 	}
 }
+
+=head1 NAME
+
+Catmandu::Importer::ApacheLog - Catmandu importer for importing log entries
+
+=head1 DESCRIPTION
+
+This importer reads every entry in the log file, and extracts the parts into a record.
+The original line is stored in the attribute '_log'.
+
+=head1 METHODS
+
+=head2 new(file => $file,fix => $fix,fast => 1,formats => ['combined','common'])
+
+=head1 SYNOPSIS
+
+use Catmandu::Importer::ApacheLog;
+use Data::Dumper;
+
+my $importer = Catmandu::Importer::ApacheLog->new(
+    fast => 1,
+    file => "/var/log/httpd/access_log"
+);
+
+$importer->each(sub{
+    print Dumper(shift);
+});
+
+=head1 AUTHORS
+
+Nicolas Franck C<< <nicolas.franck at ugent.be> >>
+
+=head1 SEE ALSO
+
+L<Catmandu>, L<Catmandu::Importer> , L<Apache::Log::Parser>
+
+=cut
 
 1;
