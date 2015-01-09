@@ -8,8 +8,6 @@ our $VERSION = '0.01';
 
 with 'Catmandu::Importer';
 
-has fast    => (is => 'ro');
-has strict  => (is => 'ro');
 has formats => (
     is => 'ro',
     isa => sub { check_array_ref($_[0]); },
@@ -26,18 +24,7 @@ has _parser  => (
 
 sub _build_parser {
     my $self = $_[0];
-    my %args;
-    if($self->fast){
-        $args{fast} = $self->fast;
-    }
-    elsif($self->strict){
-        check_array_ref($self->strict());
-        $args{strict} = $self->strict();
-    }
-    else{
-        $args{fast} = 1;
-    }
-    Apache::Log::Parser->new(%args,@{ $self->formats() });
+    Apache::Log::Parser->new(fast => 1,@{ $self->formats() });
 }
 
 sub generator {
@@ -67,7 +54,7 @@ The original line is stored in the attribute '_log'.
 
 =head1 METHODS
 
-=head2 new(file => $file,fix => $fix,fast => 1,formats => ['combined','common'])
+=head2 new(file => $file,fix => $fix,formats => ['combined','common'])
 
 =head1 SYNOPSIS
 
@@ -75,7 +62,6 @@ use Catmandu::Importer::ApacheLog;
 use Data::Dumper;
 
 my $importer = Catmandu::Importer::ApacheLog->new(
-    fast => 1,
     file => "/var/log/httpd/access_log"
 );
 
