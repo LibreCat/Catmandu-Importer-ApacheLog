@@ -9,7 +9,7 @@ The original line is stored in the attribute '\_log'.
 
 # METHODS
 
-## new(file => $file,fix => $fix,fast => 1,formats => \['combined','common'\])
+## new(file => $file,fix => $fix,formats => \['combined','common'\])
 
 # SYNOPSIS
 
@@ -17,7 +17,6 @@ use Catmandu::Importer::ApacheLog;
 use Data::Dumper;
 
 my $importer = Catmandu::Importer::ApacheLog->new(
-    fast => 1,
     file => "/var/log/httpd/access\_log"
 );
 
