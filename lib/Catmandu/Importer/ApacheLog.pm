@@ -45,12 +45,12 @@ sub generator {
 
 =head1 NAME
 
-    Catmandu::Importer::ApacheLog - Catmandu importer for importing log entries
+Catmandu::Importer::ApacheLog - Catmandu importer for importing log entries
 
 =head1 DESCRIPTION
 
-    This importer reads every entry in the log file, and put the log entries (status, rhost ..) into a record.
-    The original line is stored in the attribute '_log'.
+This importer reads every entry in the log file, and put the log entries (status, rhost ..) into a record.
+The original line is stored in the attribute '_log'.
 
 =head1 METHODS
 

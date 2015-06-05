@@ -4,30 +4,50 @@ Catmandu::Importer::ApacheLog - Catmandu importer for importing log entries
 
 # DESCRIPTION
 
-This importer reads every entry in the log file, and extracts the parts into a record.
+This importer reads every entry in the log file, and put the log entries (status, rhost ..) into a record.
 The original line is stored in the attribute '\_log'.
 
 # METHODS
 
-## new(file => $file,fix => $fix,formats => \['combined','common'\])
+## new ( file => $file, fix => $fix, formats => \['combined','common'\] )
+
+- file
+
+        File to import. Can also be a string reference or a file handle. See L<Catmandu::Importer>
+
+- fix
+
+        Fix to apply to every record. See L<Catmandu::Importer>
+
+- formats
+
+        Array reference of formats
+
+        By default ['combined','common']
+
+        For more information see L<Apache::Log::Parser>, and look for the option 'fast'.
 
 # SYNOPSIS
 
-use Catmandu::Importer::ApacheLog;
-use Data::Dumper;
+    #!/usr/bin/env perl
+    use Catmandu::Importer::ApacheLog;
+    use Data::Dumper;
 
-my $importer = Catmandu::Importer::ApacheLog->new(
-    file => "/var/log/httpd/access\_log"
-);
+    my $importer = Catmandu::Importer::ApacheLog->new(
+        file => "/var/log/httpd/access_log"
+    );
 
-$importer->each(sub{
-    print Dumper(shift);
-});
+    $importer->each(sub{
+        print Dumper(shift);
+    });
+
+    #!/bin/bash
+    catmandu convert ApacheLog --file access.log to YAML
 
 # AUTHORS
 
-Nicolas Franck `<nicolas.franck at ugent.be>`
+    Nicolas Franck C<< <nicolas.franck at ugent.be> >>
 
 # SEE ALSO
 
-[Catmandu](https://metacpan.org/pod/Catmandu), [Catmandu::Importer](https://metacpan.org/pod/Catmandu::Importer) , [Apache::Log::Parser](https://metacpan.org/pod/Apache::Log::Parser)
+    L<Catmandu>, L<Catmandu::Importer> , L<Apache::Log::Parser>
