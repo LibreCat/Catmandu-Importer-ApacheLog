@@ -24,7 +24,7 @@ has _parser  => (
 
 sub _build_parser {
     my $self = $_[0];
-    Apache::Log::Parser->new(fast => 1,@{ $self->formats() });
+    Apache::Log::Parser->new(fast => $self->formats());
 }
 
 sub generator {
@@ -45,37 +45,62 @@ sub generator {
 
 =head1 NAME
 
-Catmandu::Importer::ApacheLog - Catmandu importer for importing log entries
+    Catmandu::Importer::ApacheLog - Catmandu importer for importing log entries
 
 =head1 DESCRIPTION
 
-This importer reads every entry in the log file, and extracts the parts into a record.
-The original line is stored in the attribute '_log'.
+    This importer reads every entry in the log file, and put the log entries (status, rhost ..) into a record.
+    The original line is stored in the attribute '_log'.
 
 =head1 METHODS
 
-=head2 new(file => $file,fix => $fix,formats => ['combined','common'])
+=head2 new ( file => $file, fix => $fix, formats => ['combined','common'] )
+
+=over 4
+
+=item file
+
+    File to import. Can also be a string reference or a file handle. See L<Catmandu::Importer>
+
+=item fix
+
+    Fix to apply to every record. See L<Catmandu::Importer>
+
+=item formats
+
+    Array reference of formats
+
+    By default ['combined','common']
+
+    For more information see L<Apache::Log::Parser>, and look for the option 'fast'.
+
+=back
 
 =head1 SYNOPSIS
 
-use Catmandu::Importer::ApacheLog;
-use Data::Dumper;
 
-my $importer = Catmandu::Importer::ApacheLog->new(
-    file => "/var/log/httpd/access_log"
-);
+    #!/usr/bin/env perl
+    use Catmandu::Importer::ApacheLog;
+    use Data::Dumper;
 
-$importer->each(sub{
-    print Dumper(shift);
-});
+    my $importer = Catmandu::Importer::ApacheLog->new(
+        file => "/var/log/httpd/access_log"
+    );
+
+    $importer->each(sub{
+        print Dumper(shift);
+    });
+
+    #!/bin/bash
+    catmandu convert ApacheLog --file access.log to YAML
 
 =head1 AUTHORS
 
-Nicolas Franck C<< <nicolas.franck at ugent.be> >>
+    Nicolas Franck C<< <nicolas.franck at ugent.be> >>
 
 =head1 SEE ALSO
 
-L<Catmandu>, L<Catmandu::Importer> , L<Apache::Log::Parser>
+    L<Catmandu>, L<Catmandu::Importer> , L<Apache::Log::Parser>
 
 =cut
 
