@@ -4,7 +4,7 @@ use Catmandu::Util qw(:is :check);
 use Apache::Log::Parser;
 use Moo;
 
-our $VERSION = '0.011';
+our $VERSION = '0.0111';
 
 with 'Catmandu::Importer';
 

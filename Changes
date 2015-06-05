@@ -1,5 +1,7 @@
+0.0111  2015-06-05
+    - updated pod
 0.011 2015-01-09
-  - remove support for parameter 'fast' and 'strict' in Catmandu::Importer::ApacheLog.
+    - remove support for parameter 'fast' and 'strict' in Catmandu::Importer::ApacheLog.
     Reason for this is to avoid direct dependency on Apache::Log::Parser.
 0.01  2015-01-07
-  - initial release of Catmandu::Importer::ApacheLog
+    - initial release of Catmandu::Importer::ApacheLog
