@@ -7,8 +7,6 @@ blib
 Build
 Makefile.PL
 MANIFEST*
-META.*
-MYMETA.*
 Catmandu-Importer-ApacheLog-*
 !*.t
 _build_params
