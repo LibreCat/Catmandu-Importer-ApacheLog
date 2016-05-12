@@ -1,3 +1,8 @@
+Revision history for Catmandu-Importer-ApacheLog
+
+{{$NEXT}}
+    - add tests
+
 0.0111  2015-06-05
     - updated pod
 0.011 2015-01-09

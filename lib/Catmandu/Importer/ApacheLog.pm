@@ -13,7 +13,14 @@ has formats => (
     isa => sub { check_array_ref($_[0]); },
     required => 1,
     lazy => 1,
-    default => sub { ["common","combined"]; }
+    default => sub { ["common","combined"]; },
+    coerce => sub {
+        my $f = $_[0];
+        if ( is_string $f ) {
+            $f = [ $f ];
+        }
+        $f;
+    }
 );
 has _parser  => (
 	is       => 'ro',
