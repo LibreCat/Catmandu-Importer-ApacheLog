@@ -2,6 +2,12 @@
 
 Catmandu::Importer::ApacheLog - Catmandu importer for importing log entries
 
+# STATUS
+
+[![Build Status](https://travis-ci.org/LibreCat/Catmandu-Importer-ApacheLog.svg?branch=master)](https://travis-ci.org/LibreCat/Catmandu-Importer-ApacheLog)
+[![Coverage](https://coveralls.io/repos/LibreCat/Catmandu-Importer-ApacheLog/badge.png?branch=master)](https://coveralls.io/r/LibreCat/Catmandu-Importer-ApacheLog)
+[![CPANTS kwalitee](http://cpants.cpanauthors.org/dist/Catmandu-Importer-ApacheLog.png)](http://cpants.cpanauthors.org/dist/Catmandu-Importer-ApacheLog)
+
 # DESCRIPTION
 
 This importer reads every entry in the log file, and put the log entries (status, rhost ..) into a record.
