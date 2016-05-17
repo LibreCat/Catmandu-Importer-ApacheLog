@@ -62,7 +62,7 @@
          "web" : "https://github.com/LibreCat/Catmandu-Importer-ApacheLog"
       }
    },
-   "version" : "0.0111",
+   "version" : "0.0112",
    "x_contributors" : [
       "Jakob Voß <jakob@nichtich.de>",
       "Nicolas Franck <Nicolas.Franck@ugent.be>",
